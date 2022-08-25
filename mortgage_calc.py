@@ -1,12 +1,16 @@
 
 class Mortgage():
-    
+    """A class describing the mortage. 
+    For now it does basically one action, calculate
+    the montlly payment"""
+
     def __init__(self, sum, years, irate):
         self.sum = sum
         self.years = years
         self.irate = irate
 
     def calculate(self):
+        """Calculate the monthly payement for a fixed rate"""
         monthly = self.sum*(self.irate/100/12)*(((1 + (self.irate/100/12))**(self.years*12))/((1 + (self.irate/100/12))**(self.years*12)-1))
         print("You will need to pay {:.2f} monthly for {} years!".format(monthly, self.years))
 
@@ -20,7 +24,6 @@ def main():
     sum, years, irate = ask_info()
     mortgage = Mortgage(sum, years, irate)
     mortgage.calculate()
-
 
 if __name__ == "__main__":
     main()
